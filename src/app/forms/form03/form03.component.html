@@ -1,0 +1,78 @@
+<div class="example-container">
+    <form #form03='ngForm' (ngSubmit)="createUser(form03)">
+        <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input matInput [placeholder]="placeholders.username" #username='ngModel' name='username' ngModel required
+                minlength="8">
+            <mat-error *ngIf='username.invalid'>
+                <mat-eror *ngIf='username.errors.required'>El campo no puede estar vacío</mat-eror>
+                <mat-eror *ngIf='username.errors.minlength'>El campo debe tener 8 carácteres</mat-eror>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" #userpass name='userpass' ngModel required>
+            <mat-error *ngIf='userpass.invalid'>
+                <mat-eror *ngIf='userpass.errors.required'>El campo no puede estar vacío</mat-eror>
+            </mat-error>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Adress</mat-label>
+            <input matInput #adress name='adress' ngModel>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Bio</mat-label>
+            <textarea matInput [placeholder]="placeholders.bio" #bio='ngModel' name='bio' ngModel
+                maxlength="256"></textarea>
+            <mat-error *ngIf='bio.invalid'>
+                <mat-eror *ngIf='bio.errors.maxlength'>El campo no puede tener más de 256 carácteres</mat-eror>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Birthday</mat-label>
+            <input type="date" matInput [placeholder]="placeholders.birthday" #birthday='ngModel' name='birthday' ngModel required>
+            <mat-error *ngIf='birthday.invalid'>
+                <mat-eror *ngIf='birthday.errors.required'>El campo no puede estar vacío</mat-eror>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Gender</mat-label>
+            <input matInput [placeholder]="placeholders.gender" #gender='ngModel' name='gender' ngModel required>
+            <mat-error *ngIf='gender.invalid'>
+                <mat-eror *ngIf='gender.errors.required'>El campo no puede estar vacío</mat-eror>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Country</mat-label>
+            <input matInput [placeholder]="placeholders.country" #country='ngModel' name='country' ngModel required>
+            <mat-error *ngIf='country.invalid'>
+                <mat-eror *ngIf='country.errors.required'>El campo no puede estar vacío</mat-eror>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Phone</mat-label>
+            <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" matInput [placeholder]="placeholders.phone" #phone='ngModel' name='phone' ngModel required>
+            <mat-error *ngIf='phone.invalid'>
+                <mat-eror *ngIf='phone.errors.required'>El campo no puede estar vacío</mat-eror>
+            </mat-error>
+            <mat-error *ngIf="user.phone != undefined && (user.phone.toString().length > 9 || (user.phone.toString().length < 9 && user.phone.toString().length > 0))">
+                <mat-error>El número debe tener 9 carácteres</mat-error>
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Full Name</mat-label>
+            <input matInput [placeholder]="placeholders.fullname" #fullname='ngModel' name='fullname' ngModel required>
+            <mat-error *ngIf='fullname.invalid'>
+                <mat-eror *ngIf='fullname.errors.required'>El campo no puede estar vacío</mat-eror>
+            </mat-error>
+        </mat-form-field>
+
+        <button class="submit-btn" color="primary" mat-raised-button type="submit" #sendButton>
+            Aceptar
+        </button>
+    </form>
+</div>

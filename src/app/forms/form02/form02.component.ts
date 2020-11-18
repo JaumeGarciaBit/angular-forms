@@ -14,17 +14,17 @@ export class Form02Component implements OnInit {
   }
   user:User = new User();
   constructor() {
-    console.log(this.user.getUsername());
-    console.log(this.user.getPassword());
+    console.log(this.user.username);
+    console.log(this.user.password);
   }
 
   ngOnInit(): void {
   }
 
   createUser(form){
-    console.log(form);
-    this.user.setUsername(form.controls.username.value);
-    this.user.setPassword(form.controls.userpass.value);
+    this.user.username = form.controls.username.value;
+    this.user.password = form.controls.userpass.value;
+    this.user.adress = form.controls.adress.value;
   }
 
 }

@@ -6,6 +6,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatRadioModule} from '@angular/material/radio';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDividerModule } from '@angular/material/divider';
+
+
 
 
 
@@ -18,7 +23,10 @@ import { CommonModule } from '@angular/common';
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
-    MatRadioModule
+    MatRadioModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatDividerModule
   ],
   exports: [
     MatToolbarModule,
@@ -26,7 +34,11 @@ import { CommonModule } from '@angular/common';
     MatMenuModule,
     MatFormFieldModule,
     MatInputModule,
-    MatRadioModule
+    MatRadioModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatDividerModule
+
   ]
 })
 export class MaterialModule { }

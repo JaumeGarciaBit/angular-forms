@@ -3,30 +3,47 @@
   <form #form02="ngForm" (ngSubmit)='createUser(form02)'>
     <mat-form-field appearance="fill">
       <mat-label>Username</mat-label>
-      <input matInput [placeholder]="placeholders.username" #username name='username' ngModel>
+      <input matInput 
+      [placeholder]="placeholders.username" 
+      #username = 'ngModel'
+      name='username' 
+      ngModel 
+      required
+      minlength="8">
+      <mat-error *ngIf='username.invalid'>
+        <mat-eror *ngIf='username.errors.required'>El campo no puede estar vacío</mat-eror>
+        <mat-eror *ngIf='username.errors.minlength'>El campo debe tener 8 carácteres</mat-eror>
+      </mat-error>
     </mat-form-field>
     <br>
     <mat-form-field appearance="fill">
       <mat-label>Password</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'" #userpass name='userpass' ngModel>
+      <input matInput [type]="hide ? 'password' : 'text'" #userpass name='userpass' ngModel required>
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Adress</mat-label>
+      <input matInput #adress name='adress' ngModel>
     </mat-form-field>
 
     <button class="submit-btn" color="primary" mat-raised-button type="submit" #sendButton>
       Aceptar
     </button>
   </form>
-  <ng-container *ngIf="(user.getUsername() > '' && user.getPassword() > ''); else faltanDatos">
+  <ng-container *ngIf="(user.username > '' && user.password > ''); else faltanDatos">
     El id de usuario es:
-    <strong>{{user.getId()}}</strong>
+    <strong>{{user.id}}</strong>
     <br>
     El nombre de usuario es:
-    <strong>{{user.getUsername()}}</strong>
+    <strong>{{user.username}}</strong>
     <br>
     La clave es:
-    <strong>{{user.getPassword()}}</strong>
+    <strong>{{user.password}}</strong>
+    <br>
+    La dirección es:
+    <strong>{{user.adress}}</strong>
   </ng-container>
   <ng-template #faltanDatos>
     Falta el nombre de usuario, la clave o ambos.
